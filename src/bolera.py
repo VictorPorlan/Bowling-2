@@ -7,7 +7,7 @@ class Bolera:
         self.puntos = list(puntos)
 
     @staticmethod
-    def acumulador_plenos_spares(siguientes_tiradas):
+    def sumas_especiales(siguientes_tiradas):
         valor_total = 0
         for tirada in siguientes_tiradas:
             if tirada.isdigit():
@@ -28,7 +28,7 @@ class Bolera:
         frame = 0
         for numero in self.puntos:
             if frame == 9:
-                puntuacion_final += Bolera.acumulador_plenos_spares(self.puntos[cantidad_tiradas:])
+                puntuacion_final += Bolera.sumas_especiales(self.puntos[cantidad_tiradas:])
                 return puntuacion_final
             if numero.isdigit():
                 puntuacion_final += int(numero)
@@ -48,11 +48,11 @@ class Bolera:
                     cantidad_tiradas_frame += 1
                 cantidad_tiradas +=1
             if numero == 'X':
-                puntuacion_final += Bolera.acumulador_plenos_spares(self.puntos[cantidad_tiradas: cantidad_tiradas+3])
+                puntuacion_final += Bolera.sumas_especiales(self.puntos[cantidad_tiradas: cantidad_tiradas+3])
                 cantidad_tiradas +=1
                 frame += 1
             if numero == '/':
-                puntuacion_final += Bolera.acumulador_plenos_spares(self.puntos[cantidad_tiradas: cantidad_tiradas+2])
+                puntuacion_final += Bolera.sumas_especiales(self.puntos[cantidad_tiradas: cantidad_tiradas+2])
                 cantidad_tiradas+=1
                 cantidad_tiradas_frame = 0
                 frame += 1
