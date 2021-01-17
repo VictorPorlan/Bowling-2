@@ -7,17 +7,17 @@ class Bolera:
         self.puntos = list(puntos)
 
     @staticmethod
-    def sumas_especiales(siguientes_tiradas):
+    def sumas_especiales(rolls):
         valor_total = 0
-        for tirada in siguientes_tiradas:
-            if tirada.isdigit():
-                valor_total += int(tirada)
-                Bolera.ultimo_numero = int(tirada)
-            if tirada == '-':
+        for roll in rolls:
+            if roll.isdigit():
+                valor_total += int(roll)
+                Bolera.ultimo_numero = int(roll)
+            if roll == '-':
                 Bolera.ultimo_numero = 0
-            if tirada == 'X':
+            if roll == 'X':
                 valor_total += Bolera.pleno
-            if tirada == '/':
+            if roll == '/':
                 valor_total += (Bolera.pleno - int(Bolera.ultimo_numero))
         return valor_total
 
